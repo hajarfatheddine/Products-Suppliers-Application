@@ -74,9 +74,9 @@ To secure each application we took the following steps:
 ```
 keycloak.realm=E-commerce-realm
 keycloak.resource=products-app
-keycloak.bearer-only=true
 keycloak.auth-server-url=http://localhost:8080
-keycloak.ssl-required=none
+keycloak.public-client=true
+keycloak.principal-attribute=name
 ```
 3. We then added configuration classes inside of the **`security`** package.
   - We created the **`KeycloakAdapterConfig`** class to easily integrate Keycloak with our application.
@@ -91,6 +91,7 @@ public class KeycloakAdapterConfig {
  ```
  - We created **`KeycloakSecurityConfig`** class to configure the security settings for our application that is protected by Keycloak. In this class we did override the configure(HttpSecurity) method to specify the security constraints for our application. 
 For example: 
+[In products-app]
  ```java
  @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -98,11 +99,31 @@ For example:
         http.authorizeRequests().antMatchers("/products/**","/suppliers/**").authenticated();
     }
  ```
-The example above shows that the ANY user that wants to access the endpoints **`/products/**`** & **`/suppliers/**`** must be authenticated first.
+The example above shows that ANY user that wants to access the endpoints **`/products/**`** & **`/suppliers/**`** must be authenticated first.
  - Before authentication:
  
- ![image](https://user-images.githubusercontent.com/84817425/211117402-9544222c-0ca7-4039-b8f0-6d15718e5028.png)
+ ![image](https://user-images.githubusercontent.com/84817425/211133928-5714c2a5-6dd8-48af-9698-4a0ffd57c203.png)
 
 - After authentication:
 
-![image](https://user-images.githubusercontent.com/84817425/211117483-ca9079d7-a645-4bfb-ae30-d869850392ed.png)
+![Capture d’écran 2023-01-07 070829](https://user-images.githubusercontent.com/84817425/211133981-9df35827-75ff-45d2-b00a-ae3fc637c1ad.png)
+
+
+[In suppliers-app]
+ ```java
+  @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        super.configure(http);
+        http.authorizeRequests().antMatchers("/suppliers/**").hasAuthority("MANAGER")
+    }
+ ```
+The example above shows that ONLY the user with the **MANAGER** role can access the endpoint **`/suppliers/**`**.
+ - An **`MANAGER`** User :
+
+ ![image](https://user-images.githubusercontent.com/84817425/211135240-e5d57f7d-a8d7-47c2-9b4c-9bbab0d95f0f.png)
+
+ - An **`USER`** User :
+
+![image](https://user-images.githubusercontent.com/84817425/211135139-ea0ec991-b4b4-49bd-b06f-a8f4fc9a9f52.png)
+
+
