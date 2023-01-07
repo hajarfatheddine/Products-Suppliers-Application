@@ -115,7 +115,7 @@ The example above shows that ANY user that wants to access the endpoints **`/pro
     }
  ```
 The example above shows that ONLY the user with the **MANAGER** role can access the endpoint **`/suppliers/**`**.
- - An **`MANAGER`** User :
+ - A **`MANAGER`** User :
 
  ![image](https://user-images.githubusercontent.com/84817425/211135240-e5d57f7d-a8d7-47c2-9b4c-9bbab0d95f0f.png)
 
