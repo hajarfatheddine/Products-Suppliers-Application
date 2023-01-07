@@ -1,8 +1,8 @@
 # Products-Suppliers-Application
 
 This repository contains 2 applications :
-- **`product-app`**
-- **`supplier-app`**
+- **`products-app`**
+- **`suppliers-app`**
 
 ### Securing The applications using Keycloak :
 
@@ -91,7 +91,7 @@ public class KeycloakAdapterConfig {
  ```
  - We created **`KeycloakSecurityConfig`** class to configure the security settings for our application that is protected by Keycloak. In this class we did override the configure(HttpSecurity) method to specify the security constraints for our application. 
 For example: 
-[In products-app]
+**[In products-app]**
  ```java
  @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -101,15 +101,12 @@ For example:
  ```
 The example above shows that ANY user that wants to access the endpoints **`/products/**`** & **`/suppliers/**`** must be authenticated first.
  - Before authentication:
- 
  ![image](https://user-images.githubusercontent.com/84817425/211133928-5714c2a5-6dd8-48af-9698-4a0ffd57c203.png)
 
 - After authentication:
-
 ![Capture d’écran 2023-01-07 070829](https://user-images.githubusercontent.com/84817425/211133981-9df35827-75ff-45d2-b00a-ae3fc637c1ad.png)
 
-
-[In suppliers-app]
+**[In suppliers-app]**
  ```java
   @Override
     protected void configure(HttpSecurity http) throws Exception {
