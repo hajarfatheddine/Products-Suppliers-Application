@@ -4,11 +4,11 @@ This repository contains 2 applications :
 - **`products-app`**
 - **`suppliers-app`**
 
-### Securing The applications using Keycloak :
+## Securing The applications using Keycloak :
 
 Keycloak is an open source **identity and access management** solution.
 
-###  a. Setting Up a Keycloak Server : 
+### Section I: Setting Up a Keycloak Server : 
 
 To be able to use it to secure our application, we must configure it.
 To do so:
@@ -25,7 +25,7 @@ To do so:
 
 ![image](https://user-images.githubusercontent.com/84817425/211116315-68c3fa61-0ccf-44f7-b29d-197612f0364d.png)
 
-#### Testing the different authentication modes using Postman
+### Testing the different authentication modes using Postman
 ##### Using the access token :
 To do so:
 
@@ -50,7 +50,7 @@ To do so:
 
 ![image](https://user-images.githubusercontent.com/84817425/211116526-a6e93c8f-5cd7-41a0-a687-a91ae7e329f2.png)
 
-### b. Securing the applications
+### Section II: Securing the applications
 
 To secure each application we took the following steps:
 1. we added the following dependencies in **`pom.xml`**
