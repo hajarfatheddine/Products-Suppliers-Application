@@ -65,6 +65,10 @@ To secure each application we took the following steps:
     <artifactId>spring-boot-starter-security</artifactId>		
     <version>2.7.7</version>
 </dependency>
+<dependency>
+    <groupId>org.thymeleaf.extras</groupId>
+    <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+</dependency>
 ```
 2. we added keycloak configuration in **`application.properties`** :
 ```
